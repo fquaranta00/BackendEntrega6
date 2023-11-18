@@ -56,7 +56,7 @@ router.get('/products', async (req, res) => {
         };
     };
 
-    console.log(products);
+    // console.log(products);
 
     res.render('products', { ...buildResponse(products), welcomeMessage });
 
@@ -96,7 +96,7 @@ router.get('/carts/:cartId', async (req, res) => {
       // Puedes redirigir a una página de error o manejar de otra manera.
       return res.status(404).render('error', { message: 'Carrito no encontrado' });
     }
-    console.log(cart);
+    // console.log(cart);
 
     // Renderizar la vista 'carts'
     res.render('cart', { cart: cart.toJSON() });

@@ -114,11 +114,18 @@ export default class CartManager {
             throw new Exception('Carrito no encontrado', 404);
         }
 
-        // Actualizar la cantidad en el carrito
+        // Actualizar la cantidad en el carrito o agregar el producto si no existe
         updatedProducts.forEach(updatedProduct => {
-            const existingProduct = cart.products.find(product => String(product.productId) === updatedProduct.productId);
+            const existingProduct = cart.products.find(product => product.productId.equals(updatedProduct.productId));
+
             if (existingProduct) {
                 existingProduct.quantity = updatedProduct.quantity;
+            } else {
+                // El producto no existe en el carrito, así que lo agregamos
+                cart.products.push({
+                    productId: updatedProduct.productId,
+                    quantity: updatedProduct.quantity
+                });
             }
         });
 

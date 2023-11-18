@@ -23,6 +23,7 @@ router.get('/profile', privateRouter, (req, res) => {
 
 router.get('/login', publicRouters, (req, res) => {
   res.render('login', { title: 'Login' });
+  // res.send('Te damos la bienvenida a la seccion privada 🖐️.')
 });
 
 router.get('/register', publicRouters, (req, res) => {
